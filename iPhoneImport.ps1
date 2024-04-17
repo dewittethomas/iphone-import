@@ -42,6 +42,7 @@ if ($selectedSource -eq $null) {
     Write-OUtput "| Hierna open je dit programma opnieuw                          |"
     Write-OUtput "| Ten slotte kies je opnieuw een apparaat in het programma      |"
     Write-OUtput "-----------------------------------------------------------------"
+    Start-Sleep -Seconds 3
     exit
 }
 
@@ -89,7 +90,7 @@ if ($items.PhotosCount -eq 0) {
     Write-Output "Het programma is gefaald aangezien u nog geen toegang heeft gegeven tot uw bestanden"
     Write-OUtput "Open eerst uw iPhone om toegang te geven!"
     Write-Output "---------------------------------------------------------------------------------------------------"
-
+    Start-Sleep -Seconds 3
     exit  
 }
 
@@ -105,7 +106,7 @@ foreach ($item in $updated_items) {
 }
 
 Write-Output "---------------------------------------------------------------------------------------------------"
-Write-Output "Uw bestanden worden geïmporteerd, dit programma niet afsluiten..."    
+Write-Output "Uw bestanden worden geï¿½mporteerd, dit programma niet afsluiten..."    
 
 # Run the import and wait for it to finish
 $importResult = Await2 ( $items.ImportItemsAsync()
@@ -117,8 +118,8 @@ $importResult = Await2 ( $items.ImportItemsAsync()
 
 if ($importResult.TotalCount -ne 0) {
     Write-Output "---------------------------------------------------------------------------------------------------"
-    Write-Output "Er zijn $($importResult.PhotosCount) nieuwe foto's geïmporteerd"
-    Write-Output "Er zijn $($importResult.VideosCount) nieuwe video's geïmporteerd"
+    Write-Output "Er zijn $($importResult.PhotosCount) nieuwe foto's geï¿½mporteerd"
+    Write-Output "Er zijn $($importResult.VideosCount) nieuwe video's geï¿½mporteerd"
     Write-Output "---------------------------------------------------------------------------------------------------"
     Write-Output "Het totaal aantal toegevoegde bestanden is: $($importResult.TotalCount)"
     Start-Sleep -Seconds 2
